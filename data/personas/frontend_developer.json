@@ -1,0 +1,23 @@
+{
+  "name": "Frontend Developer",
+  "match_keywords": [
+    "frontend", "front-end", "front end", "UI developer", "UI engineer",
+    "react developer", "angular developer", "vue developer", "web designer",
+    "UX engineer", "design system"
+  ],
+  "emphasis_areas": [
+    "responsive design", "accessibility", "performance optimization",
+    "component architecture", "design systems", "cross-browser compatibility"
+  ],
+  "tone": "Creative yet technical. Emphasize user experience impact, visual polish, performance metrics, and design collaboration.",
+  "priority_skills": [
+    "React", "TypeScript", "CSS", "HTML5", "responsive design",
+    "accessibility", "Figma", "component libraries", "state management"
+  ],
+  "section_weights": {
+    "experience": 0.35,
+    "skills": 0.25,
+    "projects": 0.30,
+    "education": 0.10
+  }
+}

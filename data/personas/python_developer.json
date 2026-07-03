@@ -1,0 +1,23 @@
+{
+  "name": "Python Developer",
+  "match_keywords": [
+    "python developer", "python engineer", "python programmer",
+    "django developer", "flask developer", "fastapi",
+    "automation engineer", "scripting", "data engineering"
+  ],
+  "emphasis_areas": [
+    "Python ecosystem mastery", "automation", "data processing",
+    "testing frameworks", "package development", "performance tuning"
+  ],
+  "tone": "Pythonic and pragmatic. Emphasize clean Python idioms, automation impact, library expertise, and processing efficiency.",
+  "priority_skills": [
+    "Python", "Django", "FastAPI", "Flask", "pandas",
+    "SQLAlchemy", "pytest", "asyncio", "celery", "pip/poetry"
+  ],
+  "section_weights": {
+    "experience": 0.40,
+    "skills": 0.30,
+    "projects": 0.20,
+    "education": 0.10
+  }
+}
