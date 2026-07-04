@@ -1,6 +1,14 @@
 # AI-Resume-Intelligence-System
 
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![Python Version](https://img.shields.io/badge/python-3.9%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 An AI-powered ATS Resume Optimization and Career Intelligence System that automatically generates optimized resumes and cover letters based on a user's master profile and a target job description.
+
+## 📸 Screenshots
+
+*(Screenshots coming soon)*
 
 ## 🚀 Features
 
