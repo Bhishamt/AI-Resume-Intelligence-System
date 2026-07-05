@@ -1,0 +1,1 @@
+docker build -t ai-resume-intelligence-system .
