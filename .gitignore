@@ -131,8 +131,13 @@ exports/
 *.docx
 
 # Additional Security
-.env.*
+.env*
+!*.example
 *.log
 .streamlit/secrets.toml
 
 profile.local.json
+history/
+exports/
+*.pdf
+*.docx
