@@ -1,70 +1,74 @@
 import os
-from dotenv import load_dotenv
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from typing import List
 
-# ── Resolve project root (two levels up from src/utils/config.py) ──
 _PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 
-# Load .env from project root
-load_dotenv(os.path.join(_PROJECT_ROOT, ".env"))
-
-
-class Config:
+class AppConfig(BaseSettings):
     """Centralised configuration with automatic dev/prod profile switching."""
 
-    # ── Core paths ───────────────────────────────────────────────────
-    PROJECT_ROOT = _PROJECT_ROOT
-    DATA_DIR     = os.path.join(PROJECT_ROOT, "data")
-    OUTPUT_DIR   = os.path.join(PROJECT_ROOT, "exports")
-    TEMPLATE_DIR = os.path.join(DATA_DIR, "templates")
+    # Core paths
+    PROJECT_ROOT: str = _PROJECT_ROOT
+    DATA_DIR: str = os.path.join(_PROJECT_ROOT, "data")
+    OUTPUT_DIR: str = os.path.join(_PROJECT_ROOT, "exports")
+    TEMPLATE_DIR: str = os.path.join(_PROJECT_ROOT, "data", "templates")
 
-    # ── API keys ─────────────────────────────────────────────────────
-    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-    GROQ_API_KEY   = os.getenv("GROQ_API_KEY", "")
+    # API keys
+    GEMINI_API_KEY: str = ""
+    GROQ_API_KEY: str = ""
 
-    # ── Model configuration ──────────────────────────────────────────
-    GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
+    # Model configuration
+    GEMINI_MODEL: str = "gemini-2.0-flash"
 
-    # ── Application mode ─────────────────────────────────────────────
-    APP_MODE = os.getenv("APP_MODE", "dev").lower().strip()
+    # Application mode
+    APP_MODE: str = "dev"
+    
+    # Profile mapping override via env
+    PROFILE_FILENAME: str | None = None
 
-    # ── Profile switching ────────────────────────────────────────────
-    _PROFILE_MAP = {
-        "dev":  "profile.local.json",
-        "prod": "profile.production.json",
-    }
-    MASTER_RESUME_PATH = os.path.join(
-        DATA_DIR,
-        _PROFILE_MAP.get(APP_MODE, "profile.local.json"),
+    model_config = SettingsConfigDict(
+        env_file=os.path.join(_PROJECT_ROOT, ".env"),
+        env_file_encoding="utf-8",
+        extra="ignore"
     )
 
-    # ── Static data ──────────────────────────────────────────────────
-    ATS_KEYWORDS_PATH = os.path.join(DATA_DIR, "ats_keywords.json")
+    @property
+    def MASTER_RESUME_PATH(self) -> str:
+        if self.PROFILE_FILENAME:
+            filename = self.PROFILE_FILENAME
+        else:
+            filename = "profile.local.json" if self.APP_MODE.lower().strip() == "dev" else "profile.production.json"
+        return os.path.join(self.DATA_DIR, filename)
 
-    # ── Validation ───────────────────────────────────────────────────
-    @classmethod
-    def validate(cls) -> list[str]:
+    @property
+    def ATS_KEYWORDS_PATH(self) -> str:
+        return os.path.join(self.DATA_DIR, "ats_keywords.json")
+
+    def validate_config(self) -> List[str]:
         """Returns a list of warning strings for any mis-configured values."""
-        warnings: list[str] = []
+        warnings: List[str] = []
 
-        if not cls.GEMINI_API_KEY:
+        if not self.GEMINI_API_KEY:
             warnings.append(
                 "GEMINI_API_KEY is not set. AI functions will use fallback provider or mock responses."
             )
 
-        if not cls.GROQ_API_KEY:
+        if not self.GROQ_API_KEY:
             warnings.append(
                 "GROQ_API_KEY is not set. Groq fallback will be unavailable."
             )
 
-        if not os.path.isfile(cls.MASTER_RESUME_PATH):
+        if not os.path.isfile(self.MASTER_RESUME_PATH):
             warnings.append(
-                f"Profile file not found: {cls.MASTER_RESUME_PATH}. "
+                f"Profile file not found: {self.MASTER_RESUME_PATH}. "
                 "Copy master_resume.template.json and populate your data."
             )
 
-        if not os.path.isfile(cls.ATS_KEYWORDS_PATH):
+        if not os.path.isfile(self.ATS_KEYWORDS_PATH):
             warnings.append(
-                f"ATS keywords file not found: {cls.ATS_KEYWORDS_PATH}."
+                f"ATS keywords file not found: {self.ATS_KEYWORDS_PATH}."
             )
 
         return warnings
+
+Config = AppConfig()
