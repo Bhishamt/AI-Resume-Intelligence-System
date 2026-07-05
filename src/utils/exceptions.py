@@ -1,0 +1,2 @@
+class AISystemError(Exception):
+    pass
