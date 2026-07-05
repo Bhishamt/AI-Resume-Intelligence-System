@@ -1,0 +1,24 @@
+{
+  "name": "AI / ML Developer",
+  "match_keywords": [
+    "AI engineer", "ML engineer", "machine learning", "deep learning",
+    "data scientist", "NLP", "computer vision", "LLM", "generative AI",
+    "AI developer", "artificial intelligence", "neural network",
+    "model training", "MLOps"
+  ],
+  "emphasis_areas": [
+    "model development", "experiment tracking", "data pipelines",
+    "model deployment", "research-to-production", "evaluation metrics"
+  ],
+  "tone": "Research-aware and production-minded. Emphasize model performance metrics, novel approaches, and real-world deployment impact.",
+  "priority_skills": [
+    "Python", "PyTorch", "TensorFlow", "scikit-learn", "Hugging Face",
+    "pandas", "numpy", "MLflow", "Docker", "cloud ML services"
+  ],
+  "section_weights": {
+    "experience": 0.35,
+    "skills": 0.25,
+    "projects": 0.30,
+    "education": 0.10
+  }
+}

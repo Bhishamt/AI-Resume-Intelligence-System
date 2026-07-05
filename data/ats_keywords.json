@@ -1,0 +1,25 @@
+{
+  "programming_languages": {
+    "python": ["python", "python3", "py"],
+    "javascript": ["javascript", "js", "ecmascript"],
+    "typescript": ["typescript", "ts"],
+    "sql": ["sql", "mysql", "postgresql", "pl/sql", "t-sql"],
+    "java": ["java", "j2ee"],
+    "cpp": ["c++", "cpp", "c plus plus"]
+  },
+  "frameworks_libraries": {
+    "react": ["react", "react.js", "reactjs"],
+    "django": ["django", "django framework"],
+    "fastapi": ["fastapi"],
+    "angular": ["angular", "angularjs"],
+    "vue": ["vue", "vue.js", "vuejs"],
+    "pytorch": ["pytorch", "torch"],
+    "tensorflow": ["tensorflow", "tf"]
+  },
+  "concepts": {
+    "machine_learning": ["machine learning", "ml", "artificial intelligence", "ai", "deep learning", "dl"],
+    "ci_cd": ["ci/cd", "continuous integration", "continuous deployment", "github actions", "jenkins", "gitlab ci"],
+    "cloud": ["cloud computing", "aws", "amazon web services", "gcp", "google cloud", "azure"],
+    "agile": ["agile", "scrum", "kanban", "sprints"]
+  }
+}

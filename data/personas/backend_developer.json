@@ -1,0 +1,23 @@
+{
+  "name": "Backend Developer",
+  "match_keywords": [
+    "backend", "back-end", "back end", "server-side", "API developer",
+    "microservices", "distributed systems", "platform engineer",
+    "infrastructure", "database engineer"
+  ],
+  "emphasis_areas": [
+    "API design", "database optimization", "microservices architecture",
+    "scalability", "security", "message queues", "caching strategies"
+  ],
+  "tone": "Architecture-focused and reliability-driven. Emphasize uptime, throughput, latency reduction, and data integrity.",
+  "priority_skills": [
+    "Python", "Django", "FastAPI", "PostgreSQL", "Redis",
+    "Docker", "Kubernetes", "REST API", "GraphQL", "message queues"
+  ],
+  "section_weights": {
+    "experience": 0.45,
+    "skills": 0.25,
+    "projects": 0.20,
+    "education": 0.10
+  }
+}

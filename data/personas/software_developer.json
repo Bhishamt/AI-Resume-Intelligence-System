@@ -1,0 +1,22 @@
+{
+  "name": "Software Developer",
+  "match_keywords": [
+    "software engineer", "software developer", "full-stack", "fullstack",
+    "SDE", "SWE", "application developer", "web developer", "full stack"
+  ],
+  "emphasis_areas": [
+    "system design", "code quality", "scalability", "testing", "CI/CD",
+    "clean architecture", "API design"
+  ],
+  "tone": "Technical and results-oriented. Emphasize system architecture, code quality, and measurable impact on system performance.",
+  "priority_skills": [
+    "algorithms", "data structures", "system design", "code review",
+    "debugging", "design patterns", "unit testing"
+  ],
+  "section_weights": {
+    "experience": 0.40,
+    "skills": 0.25,
+    "projects": 0.25,
+    "education": 0.10
+  }
+}

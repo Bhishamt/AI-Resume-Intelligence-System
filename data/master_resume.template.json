@@ -1,0 +1,53 @@
+{
+  "_schema_version": "1.0",
+  "_description": "Template schema for AI Resume Intelligence System profiles. Copy this file to profile.local.json and fill in your actual data.",
+  "personal_info": {
+    "full_name": "",
+    "email": "",
+    "phone": "",
+    "location": "",
+    "website": "",
+    "linkedin": ""
+  },
+  "summary": "",
+  "experience": [
+    {
+      "job_title": "",
+      "company": "",
+      "location": "",
+      "start_date": "YYYY-MM",
+      "end_date": "Present",
+      "highlights": []
+    }
+  ],
+  "education": [
+    {
+      "degree": "",
+      "institution": "",
+      "location": "",
+      "graduation_year": ""
+    }
+  ],
+  "skills": {
+    "languages": [],
+    "frameworks": [],
+    "databases": [],
+    "tools_platforms": []
+  },
+  "projects": [
+    {
+      "title": "",
+      "description": "",
+      "technologies": [],
+      "link": "",
+      "highlights": []
+    }
+  ],
+  "certifications": [
+    {
+      "name": "",
+      "issuer": "",
+      "date_obtained": ""
+    }
+  ]
+}
