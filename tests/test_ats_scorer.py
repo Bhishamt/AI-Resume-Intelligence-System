@@ -1,21 +1,34 @@
 import pytest
+from src.ats.ats_scorer import ATSScorer
 
-def test_ats_scorer_initialization():
-    """Test that the ATS scorer initializes correctly."""
-    # Placeholder for actual initialization test
-    assert True
 
-def test_ats_scorer_keyword_extraction():
-    """Test that the ATS scorer extracts keywords correctly from a job description."""
-    # Placeholder for keyword extraction logic test
-    jd_text = "Looking for a Python developer with Django experience."
-    extracted = ["python", "django"]
-    assert "python" in extracted
+def test_calculate_score_returns_dict():
+    resume = "Python Django developer"
+    jd = "Looking for Django engineers"
+    result = ATSScorer.calculate_score(resume, jd)
+    assert isinstance(result, dict)
+    assert "score" in result
+    assert "recruiter_score" in result
+    assert "keyword_match_pct" in result
+    assert "match_level" in result
 
-def test_ats_scorer_score_calculation():
-    """Test that the ATS scorer calculates a score based on matches."""
-    # Placeholder for score calculation test
-    matches = 5
-    total = 10
-    score = (matches / total) * 100
-    assert score == 50.0
+
+def test_calculate_score_empty_input():
+    result = ATSScorer.calculate_score("", "")
+    assert result["score"] >= 0
+    assert result["match_level"] in ["Low", "Fair", "Good", "Excellent"]
+
+
+def test_calculate_score_high_match():
+    resume = "Python Django React PostgreSQL AWS developer with 5 years experience"
+    jd = "We need a Python Django React PostgreSQL AWS engineer"
+    result = ATSScorer.calculate_score(resume, jd)
+    assert result["score"] > 0
+    assert result["keyword_match_pct"] >= 0
+
+
+def test_calculate_score_with_skills():
+    resume = "Python developer"
+    jd = "Seeking Python and Rust engineers"
+    result = ATSScorer.calculate_score(resume, jd, candidate_skills=["Python"], extracted_keywords=["Python", "Rust"])
+    assert result["keyword_match_pct"] == 50.0

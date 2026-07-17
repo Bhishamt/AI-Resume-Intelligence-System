@@ -1,17 +1,28 @@
 import pytest
+from src.resume.persona_selector import PersonaSelector
 
-def test_persona_selector_initialization():
-    """Test that the persona selector initializes correctly."""
-    # Placeholder for actual initialization test
-    assert True
 
-def test_persona_selector_matches_backend_dev():
-    """Test that the persona selector can match a backend developer profile."""
-    # Placeholder for actual matching logic test
-    keywords = ["python", "django", "api"]
-    assert "api" in keywords
+def test_select_best_persona_returns_dict():
+    jd = "Looking for a Python developer with Django experience"
+    result = PersonaSelector.select_best_persona(jd)
+    assert isinstance(result, dict)
+    assert "name" in result
+    assert "match_keywords" in result
 
-def test_persona_selector_fallback():
-    """Test that the persona selector uses a default fallback when no match is found."""
-    # Placeholder for fallback test
-    assert True
+
+def test_select_best_persona_python():
+    jd = "We need a senior Python developer for data engineering"
+    result = PersonaSelector.select_best_persona(jd)
+    assert result is not None
+
+
+def test_select_best_persona_frontend():
+    jd = "Looking for a React TypeScript frontend engineer"
+    result = PersonaSelector.select_best_persona(jd)
+    assert result is not None
+
+
+def test_select_best_persona_fallback():
+    result = PersonaSelector.select_best_persona("")
+    assert result is not None
+    assert "name" in result

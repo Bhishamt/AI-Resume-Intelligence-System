@@ -9,9 +9,9 @@ def test_keyword_extraction():
     text = "We need a Python developer who knows Django and React."
     keywords = extractor.extract_keywords(text)
     
-    assert "Python" in keywords["programming_languages"]
-    assert "Django" in keywords["frameworks_libraries"]
-    assert "React" in keywords["frameworks_libraries"]
+    assert "python" in keywords["programming_languages"]
+    assert "django" in keywords["frameworks_libraries"]
+    assert "react" in keywords["frameworks_libraries"]
 
 def test_ats_scorer():
     resume = "Python Django developer with 4 years experience."
