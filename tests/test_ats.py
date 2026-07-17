@@ -27,6 +27,6 @@ def test_skill_gap():
     
     gap_report = SkillGapAnalyzer.analyze_gaps(resume_skills, job_keywords)
     
-    assert "Aws" in gap_report["missing_skills"]
-    assert "React" in gap_report["missing_skills"]
-    assert "Python" in gap_report["matching_skills"]
+    assert "aws" in gap_report["missing_skills"]
+    assert "react" in gap_report["missing_skills"]
+    assert "python" in gap_report["matching_skills"]

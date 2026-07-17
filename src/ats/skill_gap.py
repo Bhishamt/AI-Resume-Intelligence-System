@@ -11,10 +11,10 @@ class SkillGapAnalyzer:
         # Recommendations
         recommendations = []
         for skill in missing_skills:
-            recommendations.append(f"Consider learning or adding relevant project work in '{skill.capitalize()}' if you have experience.")
+            recommendations.append(f"Consider learning or adding relevant project work in '{skill}' if you have experience.")
 
         return {
-            "matching_skills": [s.capitalize() for s in matching_skills],
-            "missing_skills": [s.capitalize() for s in missing_skills],
+            "matching_skills": [s for s in matching_skills],
+            "missing_skills": [s for s in missing_skills],
             "recommendations": recommendations
         }

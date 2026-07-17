@@ -34,7 +34,7 @@ class SyntheticJDGenerator:
         Do not include introductory conversational text, just output the raw Job Description text.
         """
         
-        response = ai_provider.generate_content(prompt)
+        response = ai_provider.generate_text(prompt)
         if not response:
             return ""
             

@@ -225,7 +225,7 @@ if active_mode:
             recruiter_score=ats_results["recruiter_score"],
             keyword_match_pct=ats_results["keyword_match_pct"],
             missing_skills=missing_skills,
-            recommended_skills=gap_analysis.get("recommended_courses", []),
+            recommended_skills=gap_analysis.get("recommendations", []),
             ranked_projects=ranked_projects,
             exported_files=[pdf_path, docx_path, cl_path]
         )

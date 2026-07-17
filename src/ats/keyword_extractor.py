@@ -23,7 +23,7 @@ class KeywordExtractor:
                     pattern = rf"\b{re.escape(synonym)}\b"
                     if re.search(pattern, text_lower):
                         if category in extracted:
-                            extracted[category].append(key.capitalize())
+                            extracted[category].append(key)
                             break  # Avoid adding duplicates from multiple synonyms
                             
         return extracted
