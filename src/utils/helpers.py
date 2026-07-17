@@ -1,5 +1,8 @@
 import os
 import json
+import logging
+
+logger = logging.getLogger(__name__)
 
 def load_json_file(file_path: str) -> dict:
     """Safely loads a JSON file from disk."""
@@ -9,7 +12,7 @@ def load_json_file(file_path: str) -> dict:
         with open(file_path) as f:
             return json.load(f)
     except Exception as e:
-        print(f"Error loading {file_path}: {e}")
+        logger.error("Error loading %s: %s", file_path, e)
         return {}
 
 def save_json_file(file_path: str, data: dict) -> bool:
@@ -20,5 +23,5 @@ def save_json_file(file_path: str, data: dict) -> bool:
             json.dump(data, f, indent=2, ensure_ascii=False)
         return True
     except Exception as e:
-        print(f"Error saving to {file_path}: {e}")
+        logger.error("Error saving to %s: %s", file_path, e)
         return False

@@ -1,7 +1,10 @@
+import logging
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER, TA_LEFT
+
+logger = logging.getLogger(__name__)
 
 class PDFExporter:
     @staticmethod
@@ -95,7 +98,7 @@ class PDFExporter:
             doc.build(story)
             return True
         except Exception as e:
-            print(f"Failed to generate PDF: {e}")
+            logger.error("Failed to generate PDF: %s", e)
             return False
         
     @staticmethod
@@ -121,5 +124,5 @@ class PDFExporter:
             doc.build(story)
             return True
         except Exception as e:
-            print(f"Failed to generate cover letter PDF: {e}")
+            logger.error("Failed to generate cover letter PDF: %s", e)
             return False

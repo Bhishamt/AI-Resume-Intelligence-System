@@ -1,4 +1,7 @@
+import logging
 from docx import Document
+
+logger = logging.getLogger(__name__)
 
 class DOCXExporter:
     @staticmethod
@@ -43,7 +46,7 @@ class DOCXExporter:
             doc.save(output_path)
             return True
         except Exception as e:
-            print(f"Failed to generate DOCX: {e}")
+            logger.error("Failed to generate DOCX: %s", e)
             return False
             
     @staticmethod
@@ -61,5 +64,5 @@ class DOCXExporter:
             doc.save(output_path)
             return True
         except Exception as e:
-            print(f"Failed to generate cover letter DOCX: {e}")
+            logger.error("Failed to generate cover letter DOCX: %s", e)
             return False
